@@ -25,7 +25,7 @@ fn part2(input: &Vec<u8>) {
     }
 }
 
-pub fn day1_2015() {
+pub fn solve() {
     let example_input = fs::read_to_string("src/year_2015/day1/example.txt").unwrap().chars().map(|x| x as u8).collect::<Vec<u8>>();
     part1(&example_input);
 
