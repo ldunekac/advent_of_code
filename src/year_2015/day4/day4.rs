@@ -18,11 +18,10 @@ fn part2(key: &str) -> usize {
     return hash_that_starts_with(key, "000000");
 }
 
-
 pub fn solve() {
     println!("Number to make md5 hash start with 5 zeros is {}", part1(&"abcdef"));
     println!("Number to make md5 hash start with 5 zeros is {}", part1(&"pqrstuv"));
-
     println!("Number to make md5 hash start with 5 zeros is {}", part1(&"bgvyzdsv"));
+
     println!("Number to make md5 hash start with 6 zeros is {}", part2(&"bgvyzdsv"));
 }
