@@ -20,7 +20,6 @@ fn get_val (s: &String, map: &HashMap<&String, u16>) -> Result<u16, &'static str
     }
 }
 
-
 fn part1_and_2(commands: &Vec<Vec<String>>, return_wire: &String, b_override: Option<u16>) -> u16 {
     let mut wires: HashMap<&String, u16> = HashMap::new();
 
