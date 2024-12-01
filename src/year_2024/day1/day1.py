@@ -41,12 +41,12 @@ def main():
     inputfile = "example.txt"
     list1, list2 = read_input(inputfile)
     answer = solution2(list1, list2)
-    print(f"Solution to part 1 example: {answer}")
+    print(f"Solution to part 2 example: {answer}")
 
     inputfile = "input.txt"
     list1, list2 = read_input(inputfile)
     answer = solution2(list1, list2)
-    print(f"Solution to part 1 input: {answer}")
+    print(f"Solution to part 2 input: {answer}")
 
 
 if __name__ == "__main__":
