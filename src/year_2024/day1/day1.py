@@ -1,7 +1,4 @@
 
-
-
-
 def solution2(list1, list2):
     list1.sort()
     list2.sort()
@@ -19,7 +16,6 @@ def solution1(list1, list2):
     list2.sort()
     return sum(abs(a-b) for a,b in zip(list1, list2))
 
-
 def read_input(filename):
     list1, list2 = [], []
     with open(filename, "r") as file:
@@ -31,17 +27,16 @@ def read_input(filename):
     return list1, list2
 
 
-
 def main():
-    # inputfile = "example.txt"
-    # list1, list2 = read_input(inputfile)
-    # answer = solution1(list1, list2)
-    # print(f"Solution to part 1 example: {answer}")
-    #
-    # inputfile = "input.txt"
-    # list1, list2 = read_input(inputfile)
-    # answer = solution1(list1, list2)
-    # print(f"Solution to part 1 input: {answer}")
+    inputfile = "example.txt"
+    list1, list2 = read_input(inputfile)
+    answer = solution1(list1, list2)
+    print(f"Solution to part 1 example: {answer}")
+
+    inputfile = "input.txt"
+    list1, list2 = read_input(inputfile)
+    answer = solution1(list1, list2)
+    print(f"Solution to part 1 input: {answer}")
 
     inputfile = "example.txt"
     list1, list2 = read_input(inputfile)
