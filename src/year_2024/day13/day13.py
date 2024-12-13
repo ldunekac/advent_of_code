@@ -3,18 +3,50 @@ import time
 from alive_progress import alive_bar
 from queue import PriorityQueue
 
+# too high 109286266375681
+
 def solution2(machines):
     total = 0
     with alive_bar(len(machines)) as bar:
         for machine in machines:
             (ax, ay), (bx, by), (goalx, goaly) = machine
-            machine = (ax, ay), (bx, by), (goalx + 10000000000000, goaly + 10000000000000)
-            total += min_cost2(machine)
+            machine1 = (ax, ay), (bx, by), (goalx + 10000000000000, goaly + 10000000000000)
+            total += min_cost2(machine1)
             bar()
     return total
 
-def main_cost2(machine):
-    pass
+def line(p1, p2):
+    A = (p1[1] - p2[1])
+    B = (p2[0] - p1[0])
+    C = (p1[0]*p2[1] - p2[0]*p1[1])
+    return A, B, -C
+
+def intersection(L1, L2):
+    D  = L1[0] * L2[1] - L1[1] * L2[0]
+    Dx = L1[2] * L2[1] - L1[1] * L2[2]
+    Dy = L1[0] * L2[2] - L1[2] * L2[0]
+    if D != 0:
+        x = Dx / D
+        y = Dy / D
+        return x,y
+    else:
+        return False
+
+def min_cost2(machine):
+    (ax, ay), (bx, by), (goalx, goaly) = machine
+    L1 = line([0,0], [ax, ay])
+    L2 = line([goalx, goaly], [goalx + bx, goaly + by])
+    inter = intersection(L1, L2)
+    if inter:
+      a_press = abs(inter[0]) // ax
+      b_press = abs(goalx - inter[0]) // bx
+
+      if ((a_press * ax) + (b_press * bx) == goalx) and ((a_press * ay) + (b_press * by) == goaly):
+        return int(3*a_press + b_press)
+      return 0
+    else:
+        raise Exception("WAT")
+
 
 def min_cost(machine):
     a_cost = 3
@@ -28,7 +60,7 @@ def min_cost(machine):
     timesy = goaly // ay
 
     a_press = min(timesx, timesy)
-    print(f"Initial A press: {a_press}")
+    # print(f"Initial A press: {a_press}")
     b_press_ans = -1
     a_press_ans = -1
     while a_press > -1:
@@ -49,7 +81,9 @@ def min_cost(machine):
             max_cost = (a_press * 3) + (b_pess_x)
             b_press_ans = b_pess_x
             a_press_ans = a_press
+            print("Found")
         elif  b_equal and total_zero:
+            print("Another solution")
             new_cost = (a_press * 3) + (b_pess_x)
             if new_cost <= max_cost:
                 max_cost = new_cost
@@ -72,7 +106,7 @@ def solution1(machines):
     total = 0
     with alive_bar(len(machines)) as bar:
         for machine in machines:
-            total += min_cost(machine)
+            total += min_cost2(machine)
             bar()
     return total
 
